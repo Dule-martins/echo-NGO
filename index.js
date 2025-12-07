@@ -82,3 +82,69 @@ document.addEventListener("DOMContentLoaded", () => {
     leftCards.forEach((card) => observer.observe(card));
     rightCards.forEach((card) => observer.observe(card));
 });
+
+// carousel functionality
+let currentSlide = 0;
+const totalSlides = 3;
+let autoplayInterval;
+
+const textSlides = document.querySelectorAll('.carousel-slide-text');
+const imageSlides = document.querySelectorAll('.carousel-slide-image');
+const dots = document.querySelectorAll('.carousel-dot');
+
+function showSlide(index) {
+    // Hide all slides
+    textSlides.forEach(slide => {
+        slide.style.opacity = '0';
+        slide.style.transform = 'translateX(-20px)';
+    });
+    imageSlides.forEach(slide => {
+        slide.style.opacity = '0';
+        slide.style.transform = 'scale(1.1)';
+    });        
+    // Update dots
+    dots.forEach(dot => {
+        dot.classList.remove('bg-white');
+        dot.classList.add('bg-white', 'bg-opacity-40');
+    });        
+    // Show current slide
+    textSlides[index].style.opacity = '1';
+    textSlides[index].style.transform = 'translateX(0)';
+    imageSlides[index].style.opacity = '1';
+    imageSlides[index].style.transform = 'scale(1)';        
+    // Update active dot
+    dots[index].classList.remove('bg-opacity-40');
+    dots[index].classList.add('bg-white');
+}
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+}
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+}
+function startAutoplay() {
+    autoplayInterval = setInterval(nextSlide, 5000);
+}
+function stopAutoplay() {
+    clearInterval(autoplayInterval);
+}
+
+// Event listeners
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        stopAutoplay();
+        currentSlide = index;
+        showSlide(currentSlide);
+        startAutoplay();
+    });
+});
+
+// Pause on hover
+document.querySelector('section').addEventListener('mouseenter', stopAutoplay);
+document.querySelector('section').addEventListener('mouseleave', startAutoplay);
+
+// Initialize
+showSlide(0);
+startAutoplay();
