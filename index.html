@@ -25,160 +25,25 @@
             transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
         }
 
-        @keyframes throwCap {
-            0% { transform: translateY(0) rotate(0deg) scale(1); }
-            30% { transform: translateY(-180px) rotate(90deg) scale(1.1); }
-            50% { transform: translateY(-250px) rotate(180deg) scale(1.2); }
-            70% { transform: translateY(-180px) rotate(270deg) scale(1.1); }
-            85% { transform: translateY(0) rotate(360deg) scale(1); }
-            90% { transform: translateY(-30px) scale(1.05); } /* Bounce effect */
-            95% { transform: translateY(0) scale(1); } /* Settle */
-            /* 100% { transform: translateY(0) scale(1); } */
+          /* Ensure full viewport height on mobile */
+        .hero-section {
+            min-height: 100vh;
+            min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 1023px) {
+            .text-content-mobile {
+                min-height: 50vh;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .image-content-mobile {
+                min-height: 50vh;
             }
-        }
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .progress-bar {
-            transition: width 1.5s ease-out;
-        }
-
-        @keyframes bell-shake {
-            0% { transform: rotate(0); }
-            15% { transform: rotate(-10deg); }
-            30% { transform: rotate(10deg); }
-            45% { transform: rotate(20deg); }
-            60% { transform: rotate(10deg); }
-            75% { transform: rotate(-10deg); }
-            100% { transform: rotate(0); }
-        }
-
-        .shake:hover img {
-            animation: bell-shake 0.5s ease-in-out;
-        }
-
-        @keyframes gentle-slide-left {
-            from { transform: translateX(-30px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes gentle-slide-right {
-            from { transform: translateX(30px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .animate-gentle-left { animation: gentle-slide-left 0.8s ease-out forwards; }
-        .animate-gentle-right { animation: gentle-slide-right 0.8s ease-out forwards; }
-
-        .fade-left {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-right {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        /* Common styles for the curriculum boxes */
-
-        /* Different colors for each section */
-        .primary-box::before {
-            background: rgba(59, 130, 246, 0.8); /* Blue */
-        }
-
-        .junior-box::before {
-            background: rgba(34, 197, 94, 0.8); /* Green */
-        }
-
-        .senior-box::before {
-            background: rgba(245, 158, 11, 0.8); /* Orange */
-        }
-
-        /* Hover effect */
-        .curriculum-box::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transform: translateY(100%);
-            transition: transform 0.4s ease-in-out;
-        }
-
-        .curriculum-box:hover::before {
-            transform: translateY(0);
-        }
-
-        .curriculum-content {
-            position: relative;
-            z-index: 10;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .curriculum-box p {
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-            transform: translateY(10px);
-            color: white;
-        }
-
-        .curriculum-box:hover p {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .hidden-left {
-        opacity: 0;
-        transform: translateX(-100px);
-        transition: opacity 1.7s ease-out, transform 0.8s ease-out;
-    }
-
-        .hidden-right {
-            opacity: 0;
-            transform: translateX(100px);
-            transition: opacity 1.7s ease-out, transform 0.8s ease-out;
-        }
-
-        .show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .bending-card {
-        transform-origin: center;
-        transition: transform 0.3s ease-in-out;
-        perspective: 1000px;
-        }
-
-        .bending-card:hover {
-        transform: rotateX(8deg) rotateY(4deg);
         }
     </style>
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white overflow-x-hidden">
     <!-- Preloader -->
     <div id="preloader" class="flex items-center justify-center h-screen w-screen">
         <img src="./img/echo-ico-bgrm.png" alt="Echo Logo" class="cap-animation">
@@ -227,33 +92,34 @@
         </nav>
 
         <!-- Hero Section -->
-        <!-- Hero Section with Split Carousel -->
-        <section class="relative min-h-screen flex items-center overflow-hidden">
-            <div class="w-full h-full grid grid-cols-1 lg:grid-cols-2">
+        <section class="hero-section relative flex items-center overflow-hidden">
+            <!-- Hero Section with Split Carousel -->
+            <div class="w-full h-full flex flex-col lg:grid lg:grid lg:grid-cols-2">
                 <!-- LEFT SIDE - Text with Static Background -->
-                <div class="absolute inset-0 -z-10">
-                    <img src="./img/decor-bg-2.jpg" alt="Background">
-                </div>
-                <div class="relative min-h-screen flex items-center p-8 lg:p-16">
+                <div class="relative text-content-mobile lg:min-h-screen flex items-center p-6 sm:p-8 md:p-12 lg:p-16 order-1 lg:order-1">
+                    <div class="absolute inset-0 z-0">
+                        <img src="./img/decor-bg-2.jpg" alt="Background" class="w-full h-full object-cover">
+                    </div>
+                    <!-- <div class="relative min-h-screen flex items-center p-8 lg:p-16"> -->
                     <!-- Text Content Carousel -->
                     <div class="relative z-10 w-full">
                         <!-- Slide 1 -->
-                        <div class="carousel-slide-text absolute inset-0 opacity-100" data-slide="0">
-                            <div class="space-y-6">
-                                <div class="inline-block bg-green-500 bg-opacity-20 px-4 py-2 rounded-full text-green-300 text-sm font-bold mb-4">
+                        <div class="carousel-slide-text opacity-0 lg:absolute lg:inset-0 lg:flex lg:items-center lg:p-16" data-slide="0">
+                            <div class="space-y-4 sm:space-y-6">
+                                <div class="inline-block bg-green-500 bg-opacity-20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-green-300 text-xs sm:text-sm font-bold mb-2 sm:mb-4">
                                     ENVIRONMENT
                                 </div>
-                                <h2 class="text-4xl md:text-6xl font-bold mb-6">
+                                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
                                     Fighting <span class="gradient-text">Climate Change</span>
                                 </h2>
-                                <p class="text-xl text-gray-300 mb-8 max-w-xl">
+                                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-xl">
                                     Climate change threatens communities with pollution, deforestation, and ecosystem collapse. We're taking action now.
                                 </p>
-                                <div class="flex flex-col sm:flex-row gap-4">
-                                    <a href="#programs" class="bg-gradient-to-r from-green-600 to-emerald-600 px-8 py-4 rounded-lg font-bold hover:shadow-2xl hover:scale-105 transition-all text-center">
+                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                                    <a href="#programs" class="bg-gradient-to-r from-green-600 to-emerald-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all text-center">
                                         Learn More
                                     </a>
-                                    <a href="#contact" class="border-2 border-green-500 px-8 py-4 rounded-lg font-bold hover:bg-green-500 transition-all text-center">
+                                    <a href="#contact" class="border-2 border-green-500 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base hover:bg-green-500 transition-all text-center">
                                         Take Action
                                     </a>
                                 </div>
@@ -261,22 +127,22 @@
                         </div>
                         
                         <!-- Slide 2 -->
-                        <div class="carousel-slide-text absolute inset-0 opacity-0" data-slide="1">
-                            <div class="space-y-6">
-                                <div class="inline-block bg-red-500 bg-opacity-20 px-4 py-2 rounded-full text-red-300 text-sm font-bold mb-4">
+                        <div class="carousel-slide-text opacity-0 lg:block lg:absolute lg:inset-0 lg:flex lg:items-center lg:p-16" data-slide="1">
+                            <div class="space-y-4 sm:space-y-6">
+                                <div class="inline-block bg-red-500 bg-opacity-20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-red-300 text-xs sm:text-sm font-bold mb-2 sm:mb-4">
                                     HEALTHCARE
                                 </div>
-                                <h2 class="text-4xl md:text-6xl font-bold mb-6">
+                                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
                                     Healthcare for <span class="gradient-text">Everyone</span>
                                 </h2>
-                                <p class="text-xl text-gray-300 mb-8 max-w-xl">
+                                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-xl">
                                     Millions lack access to basic medical care, clean water, and essential medicines. We're bridging the gap.
                                 </p>
-                                <div class="flex flex-col sm:flex-row gap-4">
-                                    <a href="#programs" class="bg-gradient-to-r from-red-600 to-pink-600 px-8 py-4 rounded-lg font-bold hover:shadow-2xl hover:scale-105 transition-all text-center">
+                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                                    <a href="#programs" class="bg-gradient-to-r from-red-600 to-pink-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all text-center">
                                         Learn More
                                     </a>
-                                    <a href="#contact" class="border-2 border-red-500 px-8 py-4 rounded-lg font-bold hover:bg-red-500 transition-all text-center">
+                                    <a href="#contact" class="border-2 border-red-500 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base hover:bg-red-500 transition-all text-center">
                                         Donate Now
                                     </a>
                                 </div>
@@ -284,22 +150,22 @@
                         </div>
                         
                         <!-- Slide 3 -->
-                        <div class="carousel-slide-text absolute inset-0 opacity-0" data-slide="2">
-                            <div class="space-y-6">
-                                <div class="inline-block bg-blue-500 bg-opacity-20 px-4 py-2 rounded-full text-blue-300 text-sm font-bold mb-4">
+                        <div class="carousel-slide-text opacity-0 lg:block lg:absolute lg:inset-0 lg:flex lg:items-center lg:p-16" data-slide="2">
+                            <div class="space-y-4 sm:space-y-6">
+                                <div class="inline-block bg-blue-500 bg-opacity-20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-blue-300 text-xs sm:text-sm font-bold mb-2 sm:mb-4">
                                     EDUCATION
                                 </div>
-                                <h2 class="text-4xl md:text-6xl font-bold mb-6">
+                                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
                                     Empowering Through <span class="gradient-text">Education</span>
                                 </h2>
-                                <p class="text-xl text-gray-300 mb-8 max-w-xl">
+                                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-xl">
                                     Children learn in overcrowded, under-resourced schools without proper facilities. We're building better futures.
                                 </p>
-                                <div class="flex flex-col sm:flex-row gap-4">
-                                    <a href="#programs" class="bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 rounded-lg font-bold hover:shadow-2xl hover:scale-105 transition-all text-center">
+                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                                    <a href="#programs" class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all text-center">
                                         Learn More
                                     </a>
-                                    <a href="#contact" class="border-2 border-blue-500 px-8 py-4 rounded-lg font-bold hover:bg-blue-500 transition-all text-center">
+                                    <a href="#contact" class="border-2 border-blue-500 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base hover:bg-blue-500 transition-all text-center">
                                         Support Schools
                                     </a>
                                 </div>
@@ -309,14 +175,14 @@
                 </div>
                 
                 <!-- RIGHT SIDE - Image Carousel -->
-                <div class="relative min-h-screen">
+                <div class="relative image-content-mobile lg:min-h-screen order-2 lg:order-2">
                     <!-- Image Slide 1 -->
                     <div class="carousel-slide-image absolute inset-0 opacity-100" data-slide="0">
                         <img src="./img/img-2-copyright.jpg" alt="Environment" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-gray-900/40"></div>
-                        <div class="absolute bottom-8 left-8 right-8">
+                        <div class="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8">
                             <span class="inline-block bg-green-500 px-3 py-1 rounded-full text-xs font-bold mb-2">ENVIRONMENT</span>
-                            <h3 class="text-2xl font-bold">Protecting Our Planet</h3>
+                            <h3 class="text-xl sm:text-2xl font-bold">Protecting Our Planet</h3>
                         </div>
                     </div>
                     
@@ -324,9 +190,9 @@
                     <div class="carousel-slide-image absolute inset-0 opacity-0" data-slide="1">
                         <img src="./img/slider-1-slide-3-copyright.jpg" alt="Healthcare" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-gray-900/40"></div>
-                        <div class="absolute bottom-8 left-8 right-8">
+                        <div class="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8">
                             <span class="inline-block bg-red-500 px-3 py-1 rounded-full text-xs font-bold mb-2">HEALTHCARE</span>
-                            <h3 class="text-2xl font-bold">Medical Care For All</h3>
+                            <h3 class="text-xl sm:text-2xl font-bold">Medical Care For All</h3>
                         </div>
                     </div>
                     
@@ -334,16 +200,16 @@
                     <div class="carousel-slide-image absolute inset-0 opacity-0" data-slide="2">
                         <img src="./img/img-13-copyright.jpg" alt="Education" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-gray-900/40"></div>
-                        <div class="absolute bottom-8 left-8 right-8">
+                        <div class="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8">
                             <span class="inline-block bg-blue-500 px-3 py-1 rounded-full text-xs font-bold mb-2">EDUCATION</span>
-                            <h3 class="text-2xl font-bold">Knowledge Changes Lives</h3>
+                            <h3 class="text-xl sm:text-2xl font-bold">Knowledge Changes Lives</h3>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Carousel Controls -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <div class="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-3 sm:gap-4">
                 <!-- Dots Indicator -->
                 <div class="flex gap-2">
                     <button class="carousel-dot w-3 h-3 rounded-full bg-white transition-all" data-slide="0"></button>

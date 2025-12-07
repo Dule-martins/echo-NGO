@@ -141,10 +141,52 @@ dots.forEach((dot, index) => {
     });
 });
 
-// Pause on hover
-document.querySelector('section').addEventListener('mouseenter', stopAutoplay);
-document.querySelector('section').addEventListener('mouseleave', startAutoplay);
+ // Touch swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+        
+const section = document.querySelector('section');
+        
+section.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    });
+
+section.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+        
+function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+    // Swipe left
+    stopAutoplay();
+    nextSlide();
+    startAutoplay();
+    }
+    if (touchEndX > touchStartX + 50) {
+    // Swipe right
+    stopAutoplay();
+    prevSlide();
+    startAutoplay();
+    }
+}
+
+
+// Pause hover on desktop
+if (window.matchMedia("(min-width: 1024px)").matches) {
+    section.addEventListener('mouseenter', stopAutoplay);
+    section.addEventListener('mouseleave', startAutoplay);
+} 
 
 // Initialize
 showSlide(0);
 startAutoplay();
+
+// Adjust layout on resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        showSlide(currentSlide);
+        }, 250);
+});
