@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XYZ Int. School</title>
+    <title>ECHO - Amplifying Change, Transforming Lives </title>
+    <link rel="icon" type="image/jpeg" href="./img/echo-ico-bgrm.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Preloader styles */
@@ -29,9 +30,27 @@
             /* 100% { transform: translateY(0) scale(1); } */
         }
 
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .progress-bar {
+            transition: width 1.5s ease-out;
         }
 
         @keyframes bell-shake {
@@ -78,419 +97,369 @@
             transform: translateX(0);
         }
         /* Common styles for the curriculum boxes */
-    .curriculum-box {
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        height: 200px;
-        transition: background 0.4s ease-in-out;
-    }
 
-    /* Different colors for each section */
-    .primary-box::before {
-        background: rgba(59, 130, 246, 0.8); /* Blue */
-    }
+        /* Different colors for each section */
+        .primary-box::before {
+            background: rgba(59, 130, 246, 0.8); /* Blue */
+        }
 
-    .junior-box::before {
-        background: rgba(34, 197, 94, 0.8); /* Green */
-    }
+        .junior-box::before {
+            background: rgba(34, 197, 94, 0.8); /* Green */
+        }
 
-    .senior-box::before {
-        background: rgba(245, 158, 11, 0.8); /* Orange */
-    }
+        .senior-box::before {
+            background: rgba(245, 158, 11, 0.8); /* Orange */
+        }
 
-    /* Hover effect */
-    .curriculum-box::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transform: translateY(100%);
-        transition: transform 0.4s ease-in-out;
-    }
+        /* Hover effect */
+        .curriculum-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(100%);
+            transition: transform 0.4s ease-in-out;
+        }
 
-    .curriculum-box:hover::before {
-        transform: translateY(0);
-    }
+        .curriculum-box:hover::before {
+            transform: translateY(0);
+        }
 
-    .curriculum-content {
-        position: relative;
-        z-index: 10;
-        transition: opacity 0.3s ease-in-out;
-    }
+        .curriculum-content {
+            position: relative;
+            z-index: 10;
+            transition: opacity 0.3s ease-in-out;
+        }
 
-    .curriculum-box p {
+        .curriculum-box p {
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            transform: translateY(10px);
+            color: white;
+        }
+
+        .curriculum-box:hover p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hidden-left {
         opacity: 0;
-        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-        transform: translateY(10px);
-        color: white;
+        transform: translateX(-100px);
+        transition: opacity 1.7s ease-out, transform 0.8s ease-out;
     }
 
-    .curriculum-box:hover p {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .hidden-left {
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 1.7s ease-out, transform 0.8s ease-out;
-}
+        .hidden-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 1.7s ease-out, transform 0.8s ease-out;
+        }
 
-.hidden-right {
-    opacity: 0;
-    transform: translateX(100px);
-    transition: opacity 1.7s ease-out, transform 0.8s ease-out;
-}
+        .show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .bending-card {
+        transform-origin: center;
+        transition: transform 0.3s ease-in-out;
+        perspective: 1000px;
+        }
 
-.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-.bending-card {
-  transform-origin: center;
-  transition: transform 0.3s ease-in-out;
-  perspective: 1000px;
-}
-
-.bending-card:hover {
-  transform: rotateX(8deg) rotateY(4deg);
-}
-
-
+        .bending-card:hover {
+        transform: rotateX(8deg) rotateY(4deg);
+        }
     </style>
 </head>
-<body class="bg-white text-black  h-screen">
 
+<body class="bg-gray-900 text-white">
     <!-- Preloader -->
     <div id="preloader" class="flex items-center justify-center h-screen w-screen">
-        <img src="/img/preloader.png" alt="Graduation Cap" class="cap-animation">
+        <img src="./img/echo-ico-bgrm.png" alt="Echo Logo" class="cap-animation">
     </div>
-
-    <!-- Main Content -->
-   <div id="content" class="hidden">
-    <nav id="navbar" class="flex justify-between fixed top-0 w-full z-10 bg-transparent transition-all duration-300">
-        <div class="flex items-center">
-            <img class="w-40 h-20 py-3" src="Dashoboard_My_School_Design-1227240.webp" alt="">
-        </div>
-    
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-8 py-7 mr-3">
-            <a href="#About" class="text-white text-lg font-medium transition-colors duration-300">About Us</a>
-            <a href="#academics" class="text-white text-lg font-medium transition-colors duration-300">Academics</a>
-            <a href="#admissions" class="text-white text-lg font-medium transition-colors duration-300">Admissions</a>
-            <a href="#Contact" class="text-white text-lg font-medium transition-colors duration-300">Contact Us</a>
-        </div>
-    
-        <!-- Mobile Menu Button (Corrected Placement) -->
-        <button id="menu-btn" class="md:hidden text-white focus:outline-none px-4">
-            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-            </svg>
-        </button>
-    
-        <!-- Mobile Menu (Corrected) -->
-        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-gray-900 text-white text-center py-5 flex flex-col space-y-4 md:hidden">
-            <a href="#About" class="block">About Us</a>
-            <a href="#Services" class="block">Academics</a>
-            <a href="#Benefits" class="block">Admissions</a>
-            <a href="#Contact" class="block">Contact Us</a>
-        </div>
-    </nav>
-    
-    <section id="home">
-        <div class="relative w-full h-screen "> <!-- Added margin to push below navbar -->
-            <!-- Background Video -->
-            <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover">
-                <source src="/vid/backgroundvid.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-    
-            <!-- Lighter Overlay -->
-            <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30"></div>
-
-            <div class="relative h-full flex flex-col items-center justify-center text-center px-6 py-40">
-                <h1 id="hero-title" class="text-5xl font-bold text-white">Your Journey to Academic Excellence Begins Here
-                </h1>
-                <p id="hero-subtitle" class="text-2xl font-semibold mt-4 max-w-2xl text-white">"We provide world-class education, experienced teachers, and a learning environment that helps students excel."
-                </p>
-                <button class="mt-6 px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold">
-                    Learn More
-                </button>
-            </div>
-            <div class="flex justify-center">
-                <div class="max-w-5xl w-full px-4 -mt-10 relative">
-                    <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 justify-center ">
-                        <!-- Enroll Card -->
-                        <div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center text-center shake">
-                            <div class="w-20 h-20 bg-red-200 rounded-full flex items-center justify-center">
-                                <img src="/svg/icon-enroll-with-us.svg" alt="Enroll" class="w-12 h-12">
-                            </div>
-                            <h3 class="text-xl font-bold mt-4 text-gray-900">Enroll</h3>
-                            <p class="text-gray-600">With Us</p>
-                        </div>
-            
-                        <!-- Teach Card -->
-                        <div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center text-center shake">
-                            <div class="w-20 h-20 bg-yellow-200 rounded-full flex items-center justify-center">
-                                <img src="/svg/icon-teach-with-us.svg" alt="Teach" class="w-12 h-12">
-                            </div>
-                            <h3 class="text-xl font-bold mt-4 text-gray-900">Teach</h3>
-                            <p class="text-gray-600">With Us</p>
-                        </div>
-            
-                        <!-- Alumni Card -->
-                        <div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center text-center shake">
-                            <div class="w-20 h-20 bg-blue-200 rounded-full flex items-center justify-center">
-                                <img src="/svg/icon-enroll-with-us.svg" alt="Alumni" class="w-12 h-12">
-                            </div>
-                            <h3 class="text-xl font-bold mt-4 text-gray-900">Alumni</h3>
-                            <p class="text-gray-600">& Beyond</p>
-                        </div>
-                    </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900 bg-opacity-95 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center space-x-3">
+                    <a href="index.html" class="text-2xl font-bold gradient-text flex items-center">
+                        ECH<img src="./img/ECHO-ICON.JPG" alt="ECHO Logo" class="h-8 w-8 rounded-full mx-0.5">
+                    </a>
                 </div>
-            </div>
-        
-       
-    </section>
-    
-    <section id="About" class="flex justify-center  min-h-screen mt-20 md:mt-32 sm:mt-4
-    md:py-20">
-        <div class="max-w-6xl w-full px-6 flex flex-col md:flex-row items-center gap-10">
-            <!-- Left: Text -->
-            <div class="fade-left flex-1">
-                <div class="flex items-center gap-4">
-                    <div class="w-16 h-[3px] bg-gray-900"></div>
-                    <h2 class="text-3xl font-bold text-gray-900">Welcome to Vherse High School</h2>
-                </div>
-                <p class="text-lg text-gray-700 max-w-3xl leading-relaxed mt-4">
-                    At Vherse High School, we are dedicated to fostering an environment where students can thrive academically, socially, and personally. 
-                    Our mission is to provide a well-rounded education that empowers students with the knowledge, skills, and values they need to succeed in an ever-changing world.
-                    With a strong emphasis on academic excellence, character development, and innovative learning experiences, we prepare our students to become future leaders.
-                </p>
-            </div>
-   
-            <!-- Right: Image -->
-            <div class="fade-right flex-1">
-                <img src="/img/pexels-max-fischer.jpg" alt="Vherse High School" class="w-full rounded-lg shadow-lg">
-            </div>
-        </div>
-    </section>
-    <section id="academics" class="py-5 bg-gray-100 px-6 scroll-mt-20">
-        <div class="container mx-auto text-center">
-            <h2 class="text-5xl font-bold text-gray-900">Academics</h2>
-            <p class="text-gray-700 mt-4 text-xl">We offer a well-rounded curriculum designed to nurture excellence.</p>
-    
-            <div class="grid md:grid-cols-3 gap-8 mt-10">
-                <!-- Primary School -->
-                <div class="p-6 bg-white shadow-lg rounded-lg curriculum-box primary-box">
-                    <div class="curriculum-content">
-                        <h3 class="text-2xl font-semibold text-blue-600">Primary School</h3>
-                        <p class="mt-2">Building a strong foundation in literacy and numeracy.</p>
-                        <p class="mt-1">Fostering creativity and curiosity.</p>
-                        <p class="mt-1">Encouraging teamwork and problem-solving skills.</p>
-                    </div>
-                </div>
-            
-                <!-- Junior Secondary -->
-                <div class="p-6 bg-white shadow-lg rounded-lg curriculum-box junior-box">
-                    <div class="curriculum-content">
-                        <h3 class="text-2xl font-semibold text-green-600">Junior Secondary</h3>
-                        <p class="mt-2">Expanding knowledge in core subjects like math and science.</p>
-                        <p class="mt-1">Developing communication and analytical skills.</p>
-                        <p class="mt-1">Preparing students for specialized learning paths.</p>
-                    </div>
-                </div>
-            
-                <!-- Senior Secondary -->
-                <div class="p-6 bg-white shadow-lg rounded-lg curriculum-box senior-box">
-                    <div class="curriculum-content">
-                        <h3 class="text-2xl font-semibold text-orange-600">Senior Secondary</h3>
-                        <p class="mt-2">Advanced studies in sciences, arts, and commerce.</p>
-                        <p class="mt-1">Career and university preparation.</p>
-                        <p class="mt-1">Building leadership and critical thinking abilities.</p>
-                    </div>
-                </div>
-            </div>
-            
-
-
-            <section id="curricular" class="bg-gray-100 py-16 px-6">
-                <div class="max-w-6xl mx-auto text-center">
-                    <h2 class="md:text-4xl text-3xl font-bold text-gray-800">Curricular Activities</h2>
-                </div>
-            
-                <!-- Grid Layout -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-6xl mx-auto">
-                    
-                    <!-- STEM Programs -->
-                    <div class="flex flex-col md:flex-row items-center bg-white shadow-lg rounded-3xl p-6 space-x-0 md:space-x-8 hidden-left">
-                        <img src="/img/Group-1.png" alt="STEM" class="w-24 h-24 md:w-48 md:h-48">
-                        <div class="text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-gray-800">STEM Programs</h3>
-                            <p class="text-gray-600 mt-2 max-w-sm md:max-w-md font-semibold">
-                                Students engage in hands-on projects like robotics, coding, and science experiments to develop problem-solving skills and innovate solutions for real-world challenges.
-                            </p>
-                        </div>
-                    </div>
-            
-                    <!-- Creative Arts Integration -->
-                    <div class="flex flex-col md:flex-row items-center bg-white shadow-lg rounded-2xl p-6 space-x-0 md:space-x-4 hidden-right">
-                        <img src="/img/Group-2.png" alt="Creative Arts" class="w-24 h-24 md:w-48 md:h-48">
-                        <div class="text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-gray-800">Creative Arts Integration</h3>
-                            <p class="text-gray-600 mt-2 max-w-sm md:max-w-md font-semibold">
-                                Art and design projects tied directly to subjects like Science and Geography, enhancing creativity while reinforcing academic concepts.
-                            </p>
-                        </div>
-                    </div>
-            
-                    <!-- Mathematics Problem-Solving -->
-                    <div class="flex flex-col md:flex-row items-center bg-white shadow-lg rounded-2xl p-6 space-x-0 md:space-x-8 hidden-left">
-                        <img src="/img/Group-3.png" alt="Mathematics" class="w-24 h-24 md:w-48 md:h-48">
-                        <div class="text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-gray-800">Mathematics Problem-Solving</h3>
-                            <p class="text-gray-600 mt-2 max-w-sm md:max-w-md font-semibold">
-                                Enhancing logical thinking through interactive lessons and real-life applications.
-                            </p>
-                        </div>
-                    </div>
-            
-                    <!-- ICT Training -->
-                    <div class="flex flex-col md:flex-row items-center bg-white shadow-lg rounded-2xl p-6 space-x-0 md:space-x-4 hidden-right">
-                        <img src="/img/Group-4.png" alt="ICT Training" class="w-24 h-24 md:w-48 md:h-48">
-                        <div class="text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-gray-800">ICT Training</h3>
-                            <p class="text-gray-600 mt-2 max-w-sm md:max-w-md font-semibold">
-                                Coding, computer applications, and research skills to equip students with essential digital competencies.
-                            </p>
-                        </div>
-                    </div>
-            
-                    <!-- Science Practical Experiments -->
-                    <div class="flex flex-col md:flex-row items-center bg-white shadow-lg rounded-2xl p-6 space-x-0 md:space-x-4 hidden-left">
-                        <img src="/img/Group-5.png" alt="Science Practical" class="w-24 h-24 md:w-48 md:h-48">
-                        <div class="text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-gray-800">Science Practical Experiments</h3>
-                            <p class="text-gray-600 mt-2 max-w-sm md:max-w-md font-semibold">
-                                Hands-on lab sessions in Physics, Chemistry, and Biology to deepen theoretical concepts taught in class.
-                            </p>
-                        </div>
-                    </div>
-            
-                    <!-- Language and Literacy Development -->
-                    <div class="flex flex-col md:flex-row items-center bg-white shadow-lg rounded-2xl p-6 space-x-0 md:space-x-4 hidden-right">
-                        <img src="/img/Group-6.png" alt="Language Development" class="w-24 h-24 md:w-48 md:h-48">
-                        <div class="text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-gray-800">Language and Literacy Development</h3>
-                            <p class="text-gray-600 mt-2 max-w-sm md:max-w-md font-semibold">
-                                Includes grammar lessons, reading comprehension, and essay writing activities to strengthen communication skills.
-                            </p>
-                        </div>
-                    </div>
-            
-                </div>
-            </section>
-            
-        </div>
-    </section>
-    <section id="admissions" class="bg-white py-16 px-6 scroll-mb-20">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-4xl font-bold text-blue-700">Admissions</h2>
-            <p class="text-gray-700 mt-4 text-lg">Join our community of excellence by following our simple admission process.</p>
-        </div>
-    
-        <!-- Admission Steps -->
-        <div class="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-            <!-- Step 1 -->
-            <div class="p-6 bg-white shadow-lg rounded-lg relative overflow-hidden group">
-                <div class="absolute inset-0 bg-blue-600 scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                <h3 class="text-2xl font-semibold text-blue-600 group-hover:text-white relative z-10">Step 1: Obtain Form</h3>
-                <p class="text-gray-700 mt-2 group-hover:text-gray-200 relative z-10">Download the application form online or collect it from our office.</p>
-            </div>
-    
-            <!-- Step 2 -->
-            <div class="p-6 bg-white shadow-lg rounded-lg relative overflow-hidden group">
-                <div class="absolute inset-0 bg-green-600 scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                <h3 class="text-2xl font-semibold text-green-600 group-hover:text-white relative z-10">Step 2: Submit Form</h3>
-                <p class="text-gray-700 mt-2 group-hover:text-gray-200 relative z-10">Fill out the form and attach required documents.</p>
-            </div>
-    
-            <!-- Step 3 -->
-            <div class="p-6 bg-white shadow-lg rounded-lg relative overflow-hidden group">
-                <div class="absolute inset-0 bg-red-600 scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                <h3 class="text-2xl font-semibold text-red-600 group-hover:text-white relative z-10">Step 3: Entrance Exam</h3>
-                <p class="text-gray-700 mt-2 group-hover:text-gray-200 relative z-10">Take the entrance exam and attend an interview if required.</p>
-            </div>
-        </div>
-    
-        <!-- Call to Action -->
-      <section class="py-10" >
-        <div class="text-center mt-12">
-            <a href="#apply" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-800 transition-all">Apply Now</a>
-        </div>
-    </section>
-
-    <div id="Contact" class="bending-card bg-gradient-to-r from-blue-900 to-blue-700 text-white p-8 rounded-lg max-w-6xl mx-auto my-10 shadow-lg relative scroll-mt-32 ">
-        <h2 class="text-5xl font-bold">GET IN TOUCH</h2>
-        <div class="flex justify-between">
-            <p class="mt-2 text-gray-200 text-2xl max-w-3xl">Feel free to contact us for more details about our school, admission, partnership, and the likes.</p>
-            <button class="mt-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md">
-                CONTACT US
-            </button>
-        </div>
-    </div>
-      </section>
-
-      <footer class="bg-gray-900 text-white py-10">
-        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8 text-center md:text-left">
-            
-            <!-- Quick Link Section -->
-            <div>
-                <h3 class="text-lg font-bold mb-3">Quick Links</h3>
-                <ul class="space-y-2 text-gray-300">
-                    <li><a href="#home" class="hover:text-white transition">Home</a></li>
-                    <li><a href="#About" class="hover:text-white transition">About</a></li>
-                    <li><a href="#academic" class="hover:text-white transition">Academics</a></li>
-                    <li><a href="#admissions" class="hover:text-white transition">Admission</a></li>
-                    <li><a href="#Contact" class="hover:text-white transition">contact</a></li>
-                </ul>
-            </div>
-    
-            <!-- Quick Contact Section -->
-            <div>
-                <h3 class="text-lg font-bold mb-3">Quick Contact</h3>
-                <p class="text-gray-300">123 Street Name, City, Country</p>
-                <p class="text-gray-300 mt-2">Email: info@example.com</p>
-                <p class="text-gray-300">Phone: +123 456 7890</p>
-            </div>
-    
-            <!-- Newsletter Section -->
-            <div>
-                <h3 class="text-lg font-bold mb-3">Our Newsletter</h3>
-                <p class="text-gray-300">Subscribe to our newsletter for updates.</p>
-                <div class="mt-4">
-                    <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded bg-gray-700 text-white border-none focus:ring-2 focus:ring-blue-400">
-                    <button class="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition">
-                        Subscribe
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="program.html" class="hover:text-green-400 transition-colors">ReadCycle</a>
+                    <a href="#about" class="hover:text-green-400 transition-colors">About Us</a>
+                    <a href="#contact" class="hover:text-green-400 transition-colors">Contact Us</a>
+                    <button onclick="window.open('./downloads/program-roadmap.pdf', '_blank')" class="border-2 border-green-500 px-4 py-2 rounded-lg hover:bg-green-500 transition-all text-sm font-semibold">
+                        Download Roadmap
+                    </button>
+                    <button onclick="window.location.href='#donate'" class="bg-gradient-to-r from-green-600 to-emerald-600 px-4 py-2 rounded-lg hover:shadow-lg transition-all text-sm font-semibold">
+                        Donate
                     </button>
                 </div>
+                <button id="mobileMenuBtn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
-    
         </div>
-    
-        <!-- Bottom Section -->
-        <div class="text-center text-gray-400 text-sm mt-10">
-            © 2025 XYZ International School. All rights reserved.
+    <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-gray-800 px-4 py-4 space-y-3">
+            <a href="program.html" class="block hover:text-green-400 transition-colors">ReadCycle</a>
+            <a href="#about" class="block hover:text-green-400 transition-colors">About Us</a>
+            <a href="#contact" class="block hover:text-green-400 transition-colors">Contact Us</a>
+            <button onclick="window.open('./downloads/program-roadmap.pdf', '_blank')" class="w-full border-2 border-green-500 px-4 py-2 rounded-lg hover:bg-green-500 transition-all text-sm font-semibold">
+                Download Roadmap
+            </button>
+            <button onclick="window.location.href='#donate'" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 px-4 py-2 rounded-lg hover:shadow-lg transition-all text-sm font-semibold">
+                Donate
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <!-- Left Half - Text with World Map Background -->
+                <div class="relative p-8 lg:p-12 rounded-2xl overflow-hidden transform translate-x-[-100%] opacity-0" id="heroLeft" style="transition: all 1s ease-out;">
+                    <!-- World Map Background -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="./img/decor-bg-2.jpg" alt="World Map" class="w-full h-full object-cover opacity-20">
+                        <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/70"></div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10 space-y-8">
+                        <div>
+                            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                                Creating <span class="gradient-text">Lasting Change</span>
+                            </h2>
+                            <p class="text-lg text-gray-300 mb-6">
+                                Together, we're addressing the world's most pressing challenges
+                            </p>
+                        </div>
+                        
+                        <!-- Three Issues -->
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-3 p-4 bg-gray-800/50 rounded-lg backdrop-blur-sm">
+                                <span class="text-3xl">🌍</span>
+                                <div>
+                                    <h3 class="font-bold text-xl text-green-400 mb-1">Environmental Crisis</h3>
+                                    <p class="text-gray-300 text-sm">Climate change threatens communities with pollution, deforestation, and ecosystem collapse</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3 p-4 bg-gray-800/50 rounded-lg backdrop-blur-sm">
+                                <span class="text-3xl">❤️</span>
+                                <div>
+                                    <h3 class="font-bold text-xl text-red-400 mb-1">Healthcare Inequality</h3>
+                                    <p class="text-gray-300 text-sm">Millions lack access to basic medical care, clean water, and essential medicines</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3 p-4 bg-gray-800/50 rounded-lg backdrop-blur-sm">
+                                <span class="text-3xl">📚</span>
+                                <div>
+                                    <h3 class="font-bold text-xl text-blue-400 mb-1">Education Gap</h3>
+                                    <p class="text-gray-300 text-sm">Children learn in overcrowded, under-resourced schools without proper facilities</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <a href="#programs" class="bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-3 rounded-lg font-bold hover:shadow-2xl hover:scale-105 transition-all text-center">
+                                Explore Programs
+                            </a>
+                            <a href="#contact" class="border-2 border-purple-500 px-6 py-3 rounded-lg font-bold hover:bg-purple-500 transition-all text-center">
+                                Get Involved
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Half - Image Grid -->
+                <div class="grid grid-cols-1 gap-4 transform translate-x-[100%] opacity-0" id="heroRight" style="transition: all 1s ease-out 0.3s;">
+                    <!-- Environment Image -->
+                    <div class="relative h-64 rounded-xl overflow-hidden group">
+                        <img src="./img/image-1-copyright-1024x683.jpg" alt="Environmental degradation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-6">
+                            <div>
+                                <span class="text-green-400 font-bold text-sm uppercase tracking-wide">Environment</span>
+                                <p class="text-white font-semibold">Polluted landscapes & degraded ecosystems</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Healthcare Image -->
+                    <div class="relative h-64 rounded-xl overflow-hidden group">
+                        <img src="./img/img-2-copyright.jpg" alt="Poor healthcare facilities" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-6">
+                            <div>
+                                <span class="text-red-400 font-bold text-sm uppercase tracking-wide">Healthcare</span>
+                                <p class="text-white font-semibold">Inadequate medical facilities & resources</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Education Image -->
+                    <div class="relative h-64 rounded-xl overflow-hidden group">
+                        <img src="./img/img-13-copyright.jpg" alt="Poor education facilities" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-6">
+                            <div>
+                                <span class="text-blue-400 font-bold text-sm uppercase tracking-wide">Education</span>
+                                <p class="text-white font-semibold">Overcrowded classrooms & limited resources</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gradient-to-r from-green-900 to-indigo-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="text-5xl font-bold gradient-text mb-2">50K+</div>
+                    <div class="text-gray-300">Lives Impacted</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold gradient-text mb-2">120+</div>
+                    <div class="text-gray-300">Communities Served</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold gradient-text mb-2">15+</div>
+                    <div class="text-gray-300">Countries Reached</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-4xl md:text-5xl font-bold text-center mb-12">Our Mission</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-8 rounded-xl hover:bg-gray-750 transition-all hover:scale-105">
+                    <div class="text-4xl mb-4">📚</div>
+                    <h4 class="text-2xl font-bold mb-4 text-purple-400">Education</h4>
+                    <p class="text-gray-300">Empowering communities through access to quality education and skill development programs.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-xl hover:bg-gray-750 transition-all hover:scale-105">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h4 class="text-2xl font-bold mb-4 text-green-400">Environment</h4>
+                    <p class="text-gray-300">Fighting climate change and promoting sustainable practices for a healthier planet.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-xl hover:bg-gray-750 transition-all hover:scale-105">
+                    <div class="text-4xl mb-4">❤️</div>
+                    <h4 class="text-2xl font-bold mb-4 text-red-400">Healthcare</h4>
+                    <p class="text-gray-300">Delivering essential healthcare services to underserved communities worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-4xl md:text-5xl font-bold text-center mb-12">Featured Programs</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Green Schools Initiative - Featured Program -->
+                <div class="bg-gradient-to-br from-green-600 to-emerald-700 p-8 rounded-xl hover:shadow-2xl transition-all hover:scale-105 cursor-pointer" onclick="window.location.href='program.html'">
+                    <div class="text-4xl mb-4">🌱</div>
+                    <h4 class="text-2xl font-bold mb-4">Green Schools Initiative</h4>
+                    <p class="text-gray-100 mb-4">Integrating environmental education with climate action in schools across Africa.</p>
+                    <div class="flex items-center text-white font-bold">
+                        Learn More →
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 p-8 rounded-xl hover:shadow-2xl transition-all hover:scale-105">
+                    <div class="text-4xl mb-4">💊</div>
+                    <h4 class="text-2xl font-bold mb-4">Mobile Health Clinics</h4>
+                    <p class="text-gray-300 mb-4">Bringing essential healthcare services to remote and underserved communities.</p>
+                    <div class="text-purple-400 font-bold">Coming Soon</div>
+                </div>
+                
+                <div class="bg-gray-900 p-8 rounded-xl hover:shadow-2xl transition-all hover:scale-105">
+                    <div class="text-4xl mb-4">💻</div>
+                    <h4 class="text-2xl font-bold mb-4">Digital Literacy Program</h4>
+                    <p class="text-gray-300 mb-4">Equipping youth with essential tech skills for the future economy.</p>
+                    <div class="text-purple-400 font-bold">Coming Soon</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <h3 class="text-4xl md:text-5xl font-bold mb-6">Join Our Mission</h3>
+            <p class="text-xl text-gray-300 mb-10">Together, we can create a better future for communities worldwide.</p>
+            <form class="space-y-4">
+                <input type="text" placeholder="Your Name" class="w-full px-6 py-4 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <input type="email" placeholder="Your Email" class="w-full px-6 py-4 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <textarea placeholder="Your Message" rows="4" class="w-full px-6 py-4 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 py-8 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto text-center text-gray-400">
+            <p>&copy; 2024 Impact Global Initiative. All rights reserved.</p>
         </div>
     </footer>
-    
-    
-<script src="indexx.js"></script>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+    <script src="index.js"></script>
 </body>
 </html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ECHO - Amplifying Change, Transforming Lives </title>
+        <link rel="icon" type="image/jpeg" href="./img/ECHO-ICON.JPG">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .fade-in-up {
+                animation: fadeInUp 0.8s ease-out forwards;
+            }
+            .gradient-text {
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .progress-bar {
+                transition: width 1.5s ease-out;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-900 text-white">
+        <!-- Navigation -->
+        <nav class="fixed w-full bg-gray-900 bg-opacity-95 backdrop-blur-sm z-50 border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <a href="index.html" class="text-2xl font-bold gradient-text flex items-center">
+                            ECH<img src="./img/ECHO-ICON.JPG" alt="ECHO Logo" class="h-8 w-8 rounded-full mx-0.5">
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="index.html" class="hover:text-green-400 transition-colors">Home</a>
+                        <a href="#about" class="hover:text-green-400 transition-colors">About Us</a>
+                        <a href="#contact" class="hover:text-green-400 transition-colors">Contact Us</a>
+                        <button onclick="window.open('./downloads/program-roadmap.pdf', '_blank')" class="border-2 border-green-500 px-4 py-2 rounded-lg hover:bg-green-500 transition-all text-sm font-semibold">
+                            Download Roadmap
+                        </button>
+                        <button onclick="window.location.href='#donate'" class="bg-gradient-to-r from-green-600 to-emerald-600 px-4 py-2 rounded-lg hover:shadow-lg transition-all text-sm font-semibold">
+                            Donate
+                        </button>
+                    </div>
+                    <button id="mobileMenuBtn" class="md:hidden text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden bg-gray-800 px-4 py-4 space-y-3">
+                <a href="#home" class="block hover:text-green-400 transition-colors">Home</a>
+                <a href="#about" class="block hover:text-green-400 transition-colors">About Us</a>
+                <a href="#contact" class="block hover:text-green-400 transition-colors">Contact Us</a>
+                <button onclick="window.open('./downloads/program-roadmap.pdf', '_blank')" class="w-full border-2 border-green-500 px-4 py-2 rounded-lg hover:bg-green-500 transition-all text-sm font-semibold">
+                    Download Roadmap
+                </button>
+                <button onclick="window.location.href='#donate'" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 px-4 py-2 rounded-lg hover:shadow-lg transition-all text-sm font-semibold">
+                    Donate
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+            <!-- Background Video with Overlay -->
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <video autoplay muted loop playsinline class="w-full h-full object-cover brightness-75">
+                    <source src="./vid/echo-vid.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-r from-gray-900/40 via-gray-900/30 to-gray-900/40"></div>
+            </div>
+            <!-- Content -->
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="fade-in-up">
+                    <div class="inline-block bg-green-500 bg-opacity-20 px-4 py-2 rounded-full text-green-300 text-sm font-bold mb-6">
+                        FEATURED PROGRAM
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                        The ReadCycle <span class="gradient-text">Initiative</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-4xl">
+                        Turning Old Pages Into New Opportunities & Empowering the next generation to become environmental champions through integrated climate education and sustainable school practices across Africa.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#programs" class="bg-gradient-to-r from-green-600 to-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all">
+                            Explore Programs
+                        </a>
+                        <a href="#contact" class="border-2 border-green-500 px-8 py-4 rounded-lg font-bold text-lg hover:bg-purple-500 transition-all">
+                            Get Involved
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="py-12 bg-gray-800 border-y border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-bold text-green-400 mb-2">250+</div>
+                        <div class="text-gray-400 text-sm">Schools Transformed</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-green-400 mb-2">35K+</div>
+                        <div class="text-gray-400 text-sm">Students Engaged</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-green-400 mb-2">8</div>
+                        <div class="text-gray-400 text-sm">Countries Active</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-green-400 mb-2">500+</div>
+                        <div class="text-gray-400 text-sm">Teachers Trained</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Overview -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-6">The Challenge</h2>
+                        <p class="text-gray-300 text-lg mb-6">
+                            Climate change poses an existential threat to communities across Africa. Despite being among the lowest contributors to global emissions, African nations face disproportionate impacts including droughts, floods, and resource scarcity.
+                        </p>
+                        <p class="text-gray-300 text-lg">
+                            Traditional education systems often lack comprehensive environmental curriculum, leaving young people unprepared to address these challenges. The Green Schools Initiative bridges this gap.
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-600 to-emerald-700 p-8 rounded-2xl">
+                        <h3 class="text-3xl font-bold mb-6">Our Solution</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">✓</span>
+                                <span class="text-lg">Curriculum integration with hands-on climate education</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">✓</span>
+                                <span class="text-lg">School infrastructure upgrades (solar, water systems)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">✓</span>
+                                <span class="text-lg">Teacher training and resource development</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">✓</span>
+                                <span class="text-lg">Student-led environmental projects and gardens</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Components -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Program Components</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-900 p-8 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-100 transition-all">
+                        <div class="text-5xl mb-4">📖</div>
+                        <h3 class="text-2xl font-bold mb-4 text-green-400">Climate Curriculum</h3>
+                        <p class="text-gray-300 mb-4">Age-appropriate lessons on climate science, environmental conservation, and sustainability integrated across subjects.</p>
+                        <ul class="text-sm text-gray-400 space-y-2">
+                            <li>• Science: Climate systems & ecology</li>
+                            <li>• Math: Data analysis & carbon calculations</li>
+                            <li>• Geography: Global impacts & solutions</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900 p-8 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-100 transition-all">
+                        <div class="text-5xl mb-4">🌳</div>
+                        <h3 class="text-2xl font-bold mb-4 text-green-400">School Gardens</h3>
+                        <p class="text-gray-300 mb-4">Student-managed gardens teaching sustainable agriculture, food security, and biodiversity conservation.</p>
+                        <ul class="text-sm text-gray-400 space-y-2">
+                            <li>• Organic farming techniques</li>
+                            <li>• Composting & waste management</li>
+                            <li>• Native plant restoration</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900 p-8 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-100 transition-all">
+                        <div class="text-5xl mb-4">☀️</div>
+                        <h3 class="text-2xl font-bold mb-4 text-green-400">Green Infrastructure</h3>
+                        <p class="text-gray-300 mb-4">Installing renewable energy systems, water harvesting, and efficient waste management facilities.</p>
+                        <ul class="text-sm text-gray-400 space-y-2">
+                            <li>• Solar panel installations</li>
+                            <li>• Rainwater collection systems</li>
+                            <li>• Recycling & composting stations</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900 p-8 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-100 transition-all">
+                        <div class="text-5xl mb-4">👨‍🏫</div>
+                        <h3 class="text-2xl font-bold mb-4 text-green-400">Teacher Training</h3>
+                        <p class="text-gray-300 mb-4">Comprehensive professional development for educators on environmental pedagogy and practical skills.</p>
+                        <ul class="text-sm text-gray-400 space-y-2">
+                            <li>• Workshop series & certifications</li>
+                            <li>• Teaching resource library</li>
+                            <li>• Peer learning networks</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900 p-8 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-100 transition-all">
+                        <div class="text-5xl mb-4">🏆</div>
+                        <h3 class="text-2xl font-bold mb-4 text-green-400">Climate Clubs</h3>
+                        <p class="text-gray-300 mb-4">Student-led groups driving environmental action projects and community awareness campaigns.</p>
+                        <ul class="text-sm text-gray-400 space-y-2">
+                            <li>• Monthly action projects</li>
+                            <li>• Community outreach events</li>
+                            <li>• Inter-school competitions</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900 p-8 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-100 transition-all">
+                        <div class="text-5xl mb-4">🤝</div>
+                        <h3 class="text-2xl font-bold mb-4 text-green-400">Community Engagement</h3>
+                        <p class="text-gray-300 mb-4">Connecting schools with local communities to amplify environmental impact beyond school walls.</p>
+                        <ul class="text-sm text-gray-400 space-y-2">
+                            <li>• Parent workshops & training</li>
+                            <li>• Village tree planting drives</li>
+                            <li>• Local sustainability partnerships</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact & Progress -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Measuring Impact</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-bold">School Enrollment</span>
+                                <span class="text-green-400">85%</span>
+                            </div>
+                            <div class="h-4 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-gradient-to-r from-green-500 to-emerald-500" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-bold">Student Knowledge Increase</span>
+                                <span class="text-green-400">92%</span>
+                            </div>
+                            <div class="h-4 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-gradient-to-r from-green-500 to-emerald-500" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-bold">Teacher Satisfaction</span>
+                                <span class="text-green-400">88%</span>
+                            </div>
+                            <div class="h-4 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-gradient-to-r from-green-500 to-emerald-500" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-bold">Community Participation</span>
+                                <span class="text-green-400">76%</span>
+                            </div>
+                            <div class="h-4 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-gradient-to-r from-green-500 to-emerald-500" data-width="76"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-xl">
+                        <h3 class="text-3xl font-bold mb-6">Real Impact Stories</h3>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <p class="text-gray-300 italic mb-2">"Our school's garden now feeds 200 students daily. The kids understand where food comes from and take pride in growing it themselves."</p>
+                                <p class="text-sm text-gray-500">— Mrs. Amina Okafor, Principal, Maiduguri Primary School, Nigeria</p>
+                            </div>
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <p class="text-gray-300 italic mb-2">"Installing solar panels reduced our energy costs by 70%. We now have reliable electricity for computers and evening classes."</p>
+                                <p class="text-sm text-gray-500">— James Kimathi, Administrator, Nairobi Green Academy, Kenya</p>
+                            </div>
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <p class="text-gray-300 italic mb-2">"My students started a village recycling program. They're not just learning—they're leading change in our community."</p>
+                                <p class="text-sm text-gray-500">— Mr. Kwame Mensah, Teacher, Accra Community School, Ghana</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Involved -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-900 to-emerald-900">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Join the Movement</h2>
+                <p class="text-xl text-gray-200 mb-10">Help us expand the Green Schools Initiative to more communities across Africa.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl">
+                        <div class="text-3xl mb-3">💚</div>
+                        <h3 class="font-bold text-lg mb-2">Donate</h3>
+                        <p class="text-sm text-gray-200">$5,000 transforms one school</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl">
+                        <div class="text-3xl mb-3">👥</div>
+                        <h3 class="font-bold text-lg mb-2">Volunteer</h3>
+                        <p class="text-sm text-gray-200">Share your expertise with schools</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl">
+                        <div class="text-3xl mb-3">📢</div>
+                        <h3 class="font-bold text-lg mb-2">Advocate</h3>
+                        <p class="text-sm text-gray-200">Spread awareness in your network</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-green-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105">
+                        Support This Program
+                    </button>
+                    <a href="index.html" class="border-2 border-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-900 transition-all">
+                        Explore More Programs
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-950 py-8 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto text-center text-gray-400">
+                <p>&copy; 2024 Impact Global Initiative. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            // Animate progress bars on load
+            window.addEventListener('load', () => {
+                const progressBars = document.querySelectorAll('.progress-bar');
+                progressBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 300);
+                });
+            });
+
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(section);
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        mobileMenu.classList.add('hidden'); // Close mobile menu after click
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
