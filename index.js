@@ -1,5 +1,4 @@
 
-
 document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
         document.getElementById("preloader").classList.add("opacity-0");
@@ -69,17 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const rightCards = document.querySelectorAll(".hidden-right");
 
     const observer = new IntersectionObserver(
-      (entries, observer) => {
+    (entries, observer) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+        if (entry.isIntersecting) {
             entry.target.classList.add("show");
             observer.unobserve(entry.target);
-          }
+        }
         });
-      },
+    },
       { threshold: 0.3 } // Adjust for when to trigger the animation
     );
 
     leftCards.forEach((card) => observer.observe(card));
     rightCards.forEach((card) => observer.observe(card));
-  });
+});
